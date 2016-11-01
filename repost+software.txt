@@ -3,26 +3,18 @@
 #
 apt-get update && apt-get upgrade
 
-#
-# Mostly needed
-#
-apt-get install synaptic atop gnome-tweak-tool lshw gnome-power-manager alacarte
+# These are needed most of the time
+apt-get install synaptic atop gnome-power-manager alacarte
 apt-get install putty recordmydesktop p7zip p7zip-rar lftp
 apt-get install clamtk # virus scanner
+apt-get install thunderbird thunderbird-gnome-support xul-ext-lightning
+apt-get install thunderbird-locale-hu hunspell-hu # only for HU locale
+apt-get install owncloud-client # owncloud file sync client
+apt-get install zim # Note taking app
+
+# driver support
 apt-get install btrfs-tools # if you selected btrfs as your filesystem
 apt-get install exfat-fuse # for some sd cards
-apt-get install thunderbird thunderbird-gnome-support xul-ext-lightning
-apt-get install thunderbird-locale-hu hunspell-hu
-
-# Online file sharing client (requires an OwnCloud server)
-wget http://download.opensuse.org/repositories/isv:ownCloud:desktop/xUbuntu_14.04/Release.key
-apt-key add - < Release.key
-sh -c "echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/xUbuntu_14.04/ /' >> /etc/apt/sources.list.d/owncloud-client.list"
-apt-get update && apt-get install owncloud-client
-
-# Note taking app
-apt-add-repository ppa:jaap.karssenberg/zim && apt-get update
-apt-get install zim
 
 # backup and migration
 add-apt-repository ppa:teejee2008/ppa && apt-get update
