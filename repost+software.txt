@@ -1,0 +1,152 @@
+#
+# Start with updating the catalogue and software already installed
+#
+apt-get update && apt-get upgrade
+
+#
+# Mostly needed
+#
+apt-get install synaptic atop gnome-tweak-tool lshw gnome-power-manager alacarte
+apt-get install putty recordmydesktop p7zip p7zip-rar lftp
+apt-get install clamtk # virus scanner
+apt-get install btrfs-tools # if you selected btrfs as your filesystem
+apt-get install exfat-fuse # for some sd cards
+apt-get install thunderbird thunderbird-gnome-support xul-ext-lightning
+apt-get install thunderbird-locale-hu hunspell-hu
+
+# Online file sharing client (requires an OwnCloud server)
+wget http://download.opensuse.org/repositories/isv:ownCloud:desktop/xUbuntu_14.04/Release.key
+apt-key add - < Release.key
+sh -c "echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/xUbuntu_14.04/ /' >> /etc/apt/sources.list.d/owncloud-client.list"
+apt-get update && apt-get install owncloud-client
+
+# Note taking app
+apt-add-repository ppa:jaap.karssenberg/zim && apt-get update
+apt-get install zim
+
+# backup and migration
+add-apt-repository ppa:teejee2008/ppa && apt-get update
+apt-get install luckybackup aptik bacula-client
+
+# encryption, see this Howtogeek article
+apt-add-repository ppa:gencfsm/ppa && apt-get update
+apt-get install gnome-encfs-manager
+# Use cryptonite on Android to decrypt encrypted files
+
+# Networking (VPN, wifi hotspot, etc.)
+apt-get install network-manager-openvpn network-manager-vpnc hostapd
+
+# Skype (might got removed from repos)
+apt-get install skype
+# Fix Skype theming
+apt-get install gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386
+
+#
+# Gnome shell extensions and appindicators
+#
+apt-add-repository ppa:atareao/atareao && apt-get update
+apt-get install pomodoro-indicator youtube-indicator cryptfolder-indicator # and so on
+
+#
+# Office stuff
+#
+# Default font packages does not include Linux Libertine G (Graphite version)
+apt-add-repository ppa:pmjdebruijn/font-release && apt-get update
+apt-get install fonts-linuxlibertine-graphite
+# Libreoffice upgrade if you need it
+apt-add-repository ppa:libreoffice/ppa && apt-get update && apt-get upgrade
+# Open cliparts (openclipart.org integration would be better but it does not work atm.)
+apt-get install openclipart-libreoffice
+# Inkscape is a powerful drawing and editing tool
+apt-add-repository ppa:inkscape.dev/stable && apt-get update
+apt-get install inkscape
+# qpdfview can annotate PDF files.
+apt-get install qpdfview
+
+#
+# Software development
+#
+apt-add-repository ppa:geany-dev/ppa && apt-get update
+apt-get install geany geany-plugin-\*
+apt-get install rapidsvn bzr git mercurial
+apt-get install diodon-plugins  # A lightweight clipboard manager
+apt-get install default-jre default-jdk
+
+#
+# GNU R, R Studio et.al
+#
+apt-add-repository ppa:opencpu/rstudio && apt-get update
+apt-get install rstudio
+# Newer R packages from CRAN
+apt-add-repository ppa:marutter/rrutter && apt-get update
+# Additional R packages
+apt-add-repository ppa:marutter/c2d4u && apt-get update
+
+#
+# Sysadmin
+#
+apt-get install xca nagstamon
+
+#
+# Multimedia
+#
+add-apt-repository ppa:me-davidsansome/clementine && apt-get update 
+apt-get install clementine ripperx radiotray easytag flac faac faad sox vorbis-tools id3v2 lame libflac++6
+apt-get install mpeg3-utils mpegdemux mpeg2dec mpg321 mpg123 libmpeg2-4 libmpeg3-1
+add-apt-repository ppa:stebbins/handbrake-snapshots && apt-get update   # or -releases
+apt-get install winff handbrake vlc mencoder ffmpeg2theora ffmpeg 
+apt-get install ubuntu-restricted-extras libavcodec-extra libavformat-extra-54 libavcodec-extra-54 liba52-dev
+apt-get install libmad0 libjpeg-progs libavutil-extra-52 libswscale-extra-2
+apt-get install libdvdnav4 libdvdread4  && /usr/share/doc/libdvdread4/install-css.sh
+apt-get install rygel rygel-preferences # very simple UPnP mediaserver
+apt-get install calibre # A must-have app for your books
+add-apt-repository ppa:yorba/ppa && apt-get update # Shotwell updates
+apt-get install gimp gimp-plugin-registry gimp-data-extras
+apt-get install phatch nautilus-image-converter
+# Tomahawk "social" music player
+apt-add-repository ppa:tomahawk/ppa && apt-get update
+apt-get install tomahawk
+apt-get install solfege
+
+# Games and fun
+apt-get install gcompris gcompris-sound-hu gnome-chess eboard gnome-mines scratch tuxmath tuxpaint tuxpaint-config
+apt-get install playonlinux steam
+apt-add-repository ppa:stellarium/stellarium-releases && apt-get update
+apt-get install stellarium
+
+# For laptops
+add-apt-repository ppa:linrunner/tlp && apt-get update
+apt-get install tlp tlp-rdw powertop gpointing-device-settings 
+
+# ubuntu-tweak 
+# Be warned, that this installs compiz components and other stuff you might not want
+add-apt-repository ppa:tualatrix/ppa && apt-get update
+apt-get install ubuntu-tweak
+
+# The latest gnome apps (if you really need them)
+add-apt-repository ppa:gnome3-team/gnome3 && apt-get update
+apt-get upgrade
+
+# Other stuff
+apt-get install chromium-browser filezilla gnome-clocks
+apt-get install gkrellm* unetbootin qbittorrent
+
+#
+# Only-if-necessary packages below
+#
+
+# Latest video drivers from Oibaf repo
+apt-add-repository ppa:oibaf/graphics-drivers && sudo apt-get update && sudo apt-get dist-upgrade
+
+# Firefox H264 bugfix
+add-apt-repository ppa:mc3man/trusty-media && apt-get update
+apt-get install gstreamer0.10-ffmpeg
+
+
+Get rid of some unwanted apps and clean up the mess
+
+apt-get purge evolution rhythmbox totem myspell-en-au myspell-en-za
+apt-get -f install
+apt-get -y autoclean
+apt-get autoremove
+apt-get -y clean
