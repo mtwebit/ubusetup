@@ -3,7 +3,9 @@
 #
 apt-get update && apt-get upgrade
 
+#
 # These are needed most of the time
+#
 apt-get install synaptic atop gnome-power-manager alacarte
 apt-get install putty recordmydesktop p7zip p7zip-rar lftp
 apt-get install clamtk # virus scanner
@@ -16,10 +18,6 @@ apt-get install zim # Note taking app
 apt-get install btrfs-tools # if you selected btrfs as your filesystem
 apt-get install exfat-fuse # for some sd cards
 
-# backup and migration
-add-apt-repository ppa:teejee2008/ppa && apt-get update
-apt-get install luckybackup aptik bacula-client
-
 # encryption, see this Howtogeek article
 apt-add-repository ppa:gencfsm/ppa && apt-get update
 apt-get install gnome-encfs-manager
@@ -28,32 +26,38 @@ apt-get install gnome-encfs-manager
 # Networking (VPN, wifi hotspot, etc.)
 apt-get install network-manager-openvpn network-manager-vpnc hostapd
 
-# Skype (might got removed from repos)
-apt-get install skype
-# Fix Skype theming
-apt-get install gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386
-
-#
 # Gnome shell extensions and appindicators
-#
 apt-add-repository ppa:atareao/atareao && apt-get update
 apt-get install pomodoro-indicator youtube-indicator cryptfolder-indicator # and so on
 
 #
 # Office stuff
 #
-# Default font packages does not include Linux Libertine G (Graphite version)
-apt-add-repository ppa:pmjdebruijn/font-release && apt-get update
-apt-get install fonts-linuxlibertine-graphite
+# Additional fonts
+# TODO: not supported on 16.04 / need another source
+# apt-add-repository ppa:pmjdebruijn/font-release && apt-get update
+# apt-get install fonts-linuxlibertine-graphite
+
 # Libreoffice upgrade if you need it
 apt-add-repository ppa:libreoffice/ppa && apt-get update && apt-get upgrade
+
 # Open cliparts (openclipart.org integration would be better but it does not work atm.)
 apt-get install openclipart-libreoffice
+
 # Inkscape is a powerful drawing and editing tool
-apt-add-repository ppa:inkscape.dev/stable && apt-get update
+# apt-add-repository ppa:inkscape.dev/stable && apt-get update
 apt-get install inkscape
+
 # qpdfview can annotate PDF files.
 apt-get install qpdfview
+
+# Docker
+apt-get install docker.io
+# Add the desktop user to the docker group: sudo useradd -g docker -m <user>
+
+#
+# Below: not checked ... TODO
+#
 
 #
 # Software development
