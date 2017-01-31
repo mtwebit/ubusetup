@@ -1,58 +1,61 @@
 #
 # Start with updating the catalogue and software already installed
 #
-apt-get update && apt-get upgrade
+apt update && apt-get upgrade
 
 #
 # These are needed most of the time
 #
-apt-get install synaptic atop gnome-power-manager alacarte
-apt-get install putty recordmydesktop p7zip p7zip-rar lftp
-apt-get install clamtk # virus scanner
-apt-get install thunderbird thunderbird-gnome-support xul-ext-lightning
-apt-get install thunderbird-locale-hu hunspell-hu # only for HU locale
-apt-get install owncloud-client # owncloud file sync client
-apt-get install zim # Note taking app
+apt install synaptic atop gnome-power-manager alacarte
+apt install putty recordmydesktop p7zip p7zip-rar lftp
+apt install clamtk-gnome # virus scanner
+apt install thunderbird thunderbird-gnome-support xul-ext-lightning
+apt install thunderbird-locale-hu hunspell-hu # only for HU locale
+apt install owncloud-client # owncloud file sync client
+apt install zim # Note taking app
 
 # driver support
-apt-get install btrfs-tools # if you selected btrfs as your filesystem
-apt-get install exfat-fuse # for some sd cards
+apt install exfat-fuse # for some sd cards
+apt install intel-gpu-tools
 
-# encryption, see this Howtogeek article
-apt-add-repository ppa:gencfsm/ppa && apt-get update
-apt-get install gnome-encfs-manager
+# power tweaking for laptops
+apt install acpi-call-dkms tp-smapi-dkms tlp-rdw thinkfan # lenovo stuff
+apt install tlp
+tlp-stat
+
+# encrypted folder support with gui
+apt-add-repository ppa:gencfsm/ppa && apt update
+apt install gnome-encfs-manager
 # Use cryptonite on Android to decrypt encrypted files
 
 # Networking (VPN, wifi hotspot, etc.)
-apt-get install network-manager-openvpn network-manager-vpnc hostapd
+apt install network-manager-openvpn network-manager-vpnc
+apt install hostapd # if you want to create a wifi access point
 
 # Gnome shell extensions and appindicators
-apt-add-repository ppa:atareao/atareao && apt-get update
-apt-get install pomodoro-indicator youtube-indicator cryptfolder-indicator # and so on
+apt-add-repository ppa:atareao/atareao && apt update
+apt install pomodoro-indicator youtube-indicator cryptfolder-indicator # and so on
 
 #
 # Office stuff
 #
 # Additional fonts
-# TODO: not supported on 16.04 / need another source
+# TODO: not supported on 16.04 / need to download the fonts manually
 # apt-add-repository ppa:pmjdebruijn/font-release && apt-get update
 # apt-get install fonts-linuxlibertine-graphite
 
 # Libreoffice upgrade if you need it
-apt-add-repository ppa:libreoffice/ppa && apt-get update && apt-get upgrade
-
-# Open cliparts (openclipart.org integration would be better but it does not work atm.)
-apt-get install openclipart-libreoffice
+apt-add-repository ppa:libreoffice/ppa && apt update && apt upgrade
 
 # Inkscape is a powerful drawing and editing tool
-# apt-add-repository ppa:inkscape.dev/stable && apt-get update
-apt-get install inkscape
+# apt-add-repository ppa:inkscape.dev/stable && apt update
+apt install inkscape
 
 # qpdfview can annotate PDF files.
-apt-get install qpdfview
+apt install qpdfview
 
 # Docker
-apt-get install docker.io
+apt install docker.io
 # Add the desktop user to the docker group: sudo useradd -g docker -m <user>
 
 #
