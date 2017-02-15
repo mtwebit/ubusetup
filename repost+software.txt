@@ -59,6 +59,11 @@ apt install docker.io
 # Add the desktop user to the docker group: sudo useradd -g docker -m <user>
 
 #
+# Multimedia
+#
+apt install youtube-dl # Youtube multi-format downloader and audio+video merger
+
+#
 # Below: not checked ... TODO
 #
 
