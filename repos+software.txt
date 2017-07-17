@@ -6,7 +6,7 @@ apt update && apt-get upgrade
 #
 # These are needed most of the time
 #
-apt install synaptic atop gnome-power-manager alacarte
+apt install synaptic atop gnome-power-manager alacarte nemo
 apt install putty recordmydesktop p7zip p7zip-rar lftp
 apt install clamtk-gnome # virus scanner
 apt install thunderbird thunderbird-gnome-support xul-ext-lightning
