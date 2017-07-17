@@ -1,26 +1,30 @@
 #
 # Start with updating the catalogue and software already installed
 #
-apt update && apt-get upgrade
+apt update && apt upgrade
 
 #
 # These are needed most of the time
 #
-apt install synaptic atop gnome-power-manager alacarte nemo
+apt install synaptic atop nemo
 apt install putty recordmydesktop p7zip p7zip-rar lftp
 apt install clamtk-gnome # virus scanner
 apt install thunderbird thunderbird-gnome-support xul-ext-lightning
 apt install thunderbird-locale-hu hunspell-hu # only for HU locale
-apt install owncloud-client # owncloud file sync client
 apt install zim # Note taking app
 
+# nextcloud or owncloud
+apt install owncloud-client
+add-apt-repository ppa:nextcloud-devs/client && apt update
+apt install nextcloud-client-nautilus # will also install nextcloud-client
+ 
 # driver support
 apt install exfat-fuse # for some sd cards
 apt install intel-gpu-tools
 
 # power tweaking for laptops
 apt install acpi-call-dkms tp-smapi-dkms tlp-rdw thinkfan # lenovo stuff
-apt install tlp
+apt install tlp gnome-power-manager
 tlp-stat
 
 # encrypted folder support with gui
@@ -66,6 +70,7 @@ apt install youtube-dl # Youtube multi-format downloader and audio+video merger
 #
 # Below: not checked ... TODO
 #
+apt install alacarte
 
 #
 # Software development
