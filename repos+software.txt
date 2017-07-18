@@ -11,6 +11,7 @@ apt install putty recordmydesktop p7zip p7zip-rar lftp
 apt install clamtk-gnome # virus scanner
 apt install thunderbird thunderbird-gnome-support xul-ext-lightning
 apt install thunderbird-locale-hu hunspell-hu # only for HU locale
+apt install chromium-browser
 apt install zim # Note taking app
 
 # nextcloud or owncloud
@@ -20,11 +21,12 @@ apt install nextcloud-client-nautilus # will also install nextcloud-client
  
 # driver support
 apt install exfat-fuse # for some sd cards
-apt install intel-gpu-tools
+apt install intel-gpu-tools gpointing-device-settings
 
 # power tweaking for laptops
 apt install acpi-call-dkms tp-smapi-dkms tlp-rdw thinkfan # lenovo stuff
-apt install tlp gnome-power-manager
+# add-apt-repository ppa:linrunner/tlp && apt-get update
+apt install tlp tlp-rdw powertop gnome-power-manager
 tlp-stat
 
 # encrypted folder support with gui
@@ -70,22 +72,16 @@ apt install docker.io
 apt install youtube-dl # Youtube multi-format downloader and audio+video merger
 
 #
-# Below: not checked ... TODO
-#
-apt install alacarte
-
-#
 # Software development
 #
 apt-add-repository ppa:geany-dev/ppa && apt-get update
 apt-get install geany geany-plugin-\*
+# Version management
 apt-get install rapidsvn bzr git mercurial
 apt-get install diodon-plugins  # A lightweight clipboard manager
+# Java stuff
 apt-get install default-jre default-jdk
-
-#
 # GNU R, R Studio et.al
-#
 apt-add-repository ppa:opencpu/rstudio && apt-get update
 apt-get install rstudio
 # Newer R packages from CRAN
@@ -96,7 +92,14 @@ apt-add-repository ppa:marutter/c2d4u && apt-get update
 #
 # Sysadmin
 #
-apt-get install xca nagstamon
+apt install xca nagstamon
+
+
+#
+# Below: not checked ... TODO
+#
+
+
 
 #
 # Multimedia
@@ -124,10 +127,6 @@ apt-get install gcompris gcompris-sound-hu gnome-chess eboard gnome-mines scratc
 apt-get install playonlinux steam
 apt-add-repository ppa:stellarium/stellarium-releases && apt-get update
 apt-get install stellarium
-
-# For laptops
-add-apt-repository ppa:linrunner/tlp && apt-get update
-apt-get install tlp tlp-rdw powertop gpointing-device-settings 
 
 # ubuntu-tweak 
 # Be warned, that this installs compiz components and other stuff you might not want
