@@ -37,8 +37,10 @@ apt install network-manager-openvpn network-manager-vpnc
 apt install hostapd # if you want to create a wifi access point
 
 # Gnome shell extensions and appindicators
-apt-add-repository ppa:atareao/atareao && apt update
-apt install pomodoro-indicator youtube-indicator cryptfolder-indicator # and so on
+apt install gnome-shell-pomodoro gnome-shell-extension-suspend-button
+# previous pomodoro app:
+# apt-add-repository ppa:atareao/atareao && apt update
+# apt install pomodoro-indicator youtube-indicator cryptfolder-indicator # and so on
 
 #
 # Office stuff
