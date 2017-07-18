@@ -62,7 +62,7 @@ apt install qpdfview
 
 # Docker
 apt install docker.io
-# Add the desktop user to the docker group: sudo useradd -g docker -m <user>
+# Add the desktop user to the docker group: sudo usermod -a --groups docker <user>
 
 #
 # Multimedia
