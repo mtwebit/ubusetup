@@ -48,7 +48,8 @@ apt install gnome-shell-pomodoro gnome-shell-extension-suspend-button
 # Office stuff
 #
 # Additional fonts
-# TODO: not supported on 16.04 / need to download the fonts manually
+apt install ubuntu-restricted-extras
+# TODO: these are not supported on 16.04 / need to download the fonts manually
 # apt-add-repository ppa:pmjdebruijn/font-release && apt-get update
 # apt-get install fonts-linuxlibertine-graphite
 
