@@ -63,6 +63,10 @@ apt install inkscape
 # qpdfview can annotate PDF files.
 apt install qpdfview
 
+# Zotero research tool
+add-apt-repository ppa:smathot/cogscinl && apt update
+apt install zotero-standalone
+
 # Docker
 apt install docker.io
 # Add the desktop user to the docker group: sudo usermod -a --groups docker <user>
