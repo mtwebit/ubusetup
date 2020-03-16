@@ -1,0 +1,10 @@
+## Pulseaudio MIC settings
+
+Edit /etc/pulse/default.pa and add the following lines to the end of the file and restart pulseaudio with pulseaudio -k
+
+#Active Noise Removal
+.ifexists module-echo-cancel.so
+load-module module-echo-cancel aec_method=webrtc source_name=mic source_properties=device.description=MicHD
+set-default-source "mic"
+.endif
+
