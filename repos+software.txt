@@ -76,6 +76,8 @@ apt install docker.io
 #
 apt install youtube-dl # Youtube multi-format downloader and audio+video merger
 
+add-apt-repository ppa:openshot.developers/ppa && apt update && apt install openshot-qt
+
 #
 # Software development
 #
