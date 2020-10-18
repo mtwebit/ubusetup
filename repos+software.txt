@@ -6,19 +6,66 @@ apt update && apt upgrade
 #
 # These are needed most of the time
 #
-apt install synaptic atop nemo
-apt install putty recordmydesktop p7zip p7zip-rar lftp
+apt install synaptic atop curl
+apt install putty p7zip p7zip-rar lftp
 apt install clamtk-gnome # virus scanner
+
 apt install thunderbird thunderbird-gnome-support xul-ext-lightning
 apt install thunderbird-locale-hu hunspell-hu # only for HU locale
 apt install chromium-browser
+apt install youtube-dl # Youtube multi-format downloader and audio+video merger
+
 apt install zim # Note taking app
 
-# nextcloud or owncloud
-apt install owncloud-client
-add-apt-repository ppa:nextcloud-devs/client && apt update
-apt install nextcloud-client-nautilus # will also install nextcloud-client
- 
+# cloud stuff
+apt install nautilus-nextcloud
+curl -fsSL https://get.docker.com -o - | sh
+
+# virtualization
+apt install virtualbox virtualbox-ext-pack
+
+# gnome extensions and tweaks
+apt install gnome-tweak-tool gnome-shell-extensions
+# Get EasyScreenCast from https://extensions.gnome.org/
+
+# Additional fonts
+apt install ubuntu-restricted-extras
+
+# Inkscape is a powerful drawing and editing tool
+# apt-add-repository ppa:inkscape.dev/stable && apt update
+apt install inkscape
+
+# qpdfview can annotate PDF files.
+apt install qpdfview
+
+# Zotero research tool
+add-apt-repository ppa:smathot/cogscinl && apt update
+apt install zotero-standalone
+
+# Networking (VPN, wifi hotspot, etc.)
+apt install network-manager-openvpn-gnome network-manager-vpnc-gnome
+apt install hostapd # if you want to create a wifi access point
+
+# Software development
+# apt-add-repository ppa:geany-dev/ppa && apt-get update
+apt-get install geany geany-plugin-\*
+# Version management
+apt-get install rapidsvn bzr git mercurial
+apt-get install diodon-plugins  # A lightweight clipboard manager
+# Java stuff
+apt-get install default-jre default-jdk
+# GNU R, R Studio et.al
+apt-add-repository ppa:opencpu/rstudio && apt-get update
+apt-get install rstudio
+# Newer R packages from CRAN
+apt-add-repository ppa:marutter/rrutter && apt-get update
+# Additional R packages
+apt-add-repository ppa:marutter/c2d4u && apt-get update
+
+
+
+# Below: not tested / not needed on Ubuntu 20.04
+
 # driver support
 apt install exfat-fuse # for some sd cards
 apt install intel-gpu-tools gpointing-device-settings
@@ -34,21 +81,12 @@ apt-add-repository ppa:gencfsm/ppa && apt update
 apt install gnome-encfs-manager
 # Use cryptonite on Android to decrypt encrypted files
 
-# Networking (VPN, wifi hotspot, etc.)
-apt install network-manager-openvpn network-manager-vpnc
-apt install hostapd # if you want to create a wifi access point
-
 # Gnome shell extensions and appindicators
 apt install gnome-shell-pomodoro gnome-shell-extension-suspend-button
 # previous pomodoro app:
 # apt-add-repository ppa:atareao/atareao && apt update
 # apt install pomodoro-indicator youtube-indicator cryptfolder-indicator # and so on
 
-#
-# Office stuff
-#
-# Additional fonts
-apt install ubuntu-restricted-extras
 # TODO: these are not supported on 16.04 / need to download the fonts manually
 # apt-add-repository ppa:pmjdebruijn/font-release && apt-get update
 # apt-get install fonts-linuxlibertine-graphite
@@ -56,66 +94,13 @@ apt install ubuntu-restricted-extras
 # Libreoffice upgrade if you need it
 apt-add-repository ppa:libreoffice/ppa && apt update && apt upgrade
 
-# Inkscape is a powerful drawing and editing tool
-# apt-add-repository ppa:inkscape.dev/stable && apt update
-apt install inkscape
-
-# qpdfview can annotate PDF files.
-apt install qpdfview
-
-# Zotero research tool
-add-apt-repository ppa:smathot/cogscinl && apt update
-apt install zotero-standalone
-
-# Docker
-apt install docker.io
-# Add the desktop user to the docker group: sudo usermod -a --groups docker <user>
-
-#
-# Multimedia
-#
-apt install youtube-dl # Youtube multi-format downloader and audio+video merger
 
 add-apt-repository ppa:openshot.developers/ppa && apt update && apt install openshot-qt
-
-#
-# Software development
-#
-apt-add-repository ppa:geany-dev/ppa && apt-get update
-apt-get install geany geany-plugin-\*
-# Version management
-apt-get install rapidsvn bzr git mercurial
-apt-get install diodon-plugins  # A lightweight clipboard manager
-# Java stuff
-apt-get install default-jre default-jdk
-# GNU R, R Studio et.al
-apt-add-repository ppa:opencpu/rstudio && apt-get update
-apt-get install rstudio
-# Newer R packages from CRAN
-apt-add-repository ppa:marutter/rrutter && apt-get update
-# Additional R packages
-apt-add-repository ppa:marutter/c2d4u && apt-get update
 
 #
 # Sysadmin
 #
 apt install xca nagstamon
-
-#
-# Virtualization
-#
-# Virtualbox > 5.0 is required for Windows 10 guests to work
-wget -q -O - http://download.virtualbox.org/virtualbox/debian/oracle_vbox_2016.asc | apt-key add -
-echo "deb http://download.virtualbox.org/virtualbox/debian xenial non-free contrib" >> /etc/apt/sources.list.d/virtualbox.org.list
-apt install virtualbox-5.2
-wget http://download.virtualbox.org/virtualbox/5.2.0/Oracle_VM_VirtualBox_Extension_Pack-5.2.0-118431.vbox-extpack
-VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-5.2.0-118431.vbox-extpack 
-
-#
-# Below: not checked ... TODO
-#
-
-
 
 #
 # Multimedia
@@ -160,6 +145,7 @@ apt-get install gkrellm* unetbootin qbittorrent
 #
 # Only-if-necessary packages below
 #
+apt install recordmydesktop nemo
 
 # Latest video drivers from Oibaf repo
 apt-add-repository ppa:oibaf/graphics-drivers && sudo apt-get update && sudo apt-get dist-upgrade
