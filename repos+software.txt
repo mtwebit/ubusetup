@@ -17,16 +17,23 @@ apt install youtube-dl # Youtube multi-format downloader and audio+video merger
 
 apt install zim # Note taking app
 
-# cloud stuff
+# Nextcloud
 apt install nautilus-nextcloud
-curl -fsSL https://get.docker.com -o - | sh
 
 # virtualization
 apt install virtualbox virtualbox-ext-pack
+curl -fsSL https://get.docker.com -o - | sh
 
 # gnome extensions and tweaks
 apt install gnome-tweak-tool gnome-shell-extensions
 # Get EasyScreenCast from https://extensions.gnome.org/
+add-apt-repository ppa:gerardpuig/ppa && apt update
+apt install ubuntu-cleaner
+
+# journal cleaner
+echo "journalctl --vacuum-size=200M" > /etc/cron.monthly/journal-cleaner && chmod 755 /etc/cron.monthly/journal-cleaner
+# OR
+echo "journalctl --vacuum-time=2d" > /etc/cron.daily/journal-cleaner && chmod 755 /etc/cron.daily/journal-cleaner
 
 # Additional fonts
 apt install ubuntu-restricted-extras
