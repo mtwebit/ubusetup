@@ -8,6 +8,7 @@ apt install gnome-shell-extensions gnome-shell-extension-appindicator gnome-shel
 apt install gnome-tweak-tool language-pack-gnome-hu gnome-user-docs-hu firefox-locale-hu
 # Get EasyScreenCast from https://extensions.gnome.org/
 apt install gnome-shell-pomodoro gnome-getting-started-docs-hu
+apt instapp gnome-session
 
 # These are needed most of the time
 apt install synaptic atop curl vim-tiny sshpass mdns-scan
