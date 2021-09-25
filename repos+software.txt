@@ -1,17 +1,21 @@
 #
-# Start with updating the catalogue and software already installed
-#
+# Install Ubuntu minimal then...
+
 apt update && apt upgrade
 
-#
+# Desktop customizations
+apt install gnome-shell-extensions gnome-shell-extension-appindicator gnome-shell-extension-suspend-button gnome-shell-extension-system-monitor
+apt install gnome-tweak-tool language-pack-gnome-hu gnome-user-docs-hu firefox-locale-hu
+# Get EasyScreenCast from https://extensions.gnome.org/
+apt install gnome-shell-pomodoro gnome-getting-started-docs-hu
+
 # These are needed most of the time
-#
-apt install synaptic atop curl
-apt install putty p7zip p7zip-rar lftp
-apt install clamtk-gnome # virus scanner
+apt install synaptic atop curl vim-tiny sshpass mdns-scan
+apt install putty p7zip p7zip-rar lftp smartmontools chromium-browser
+apt install clamtk-gnome # virus scanner 
 
 apt install thunderbird thunderbird-gnome-support xul-ext-lightning
-apt install thunderbird-locale-hu hunspell-hu # only for HU locale
+apt install thunderbird-locale-hu hunspell-hu hyphen-hu hyphen-en-us # only for HU locale
 apt install chromium-browser
 apt install youtube-dl # Youtube multi-format downloader and audio+video merger
 
@@ -21,22 +25,27 @@ apt install zim # Note taking app
 apt install nautilus-nextcloud
 
 # virtualization
-apt install virtualbox virtualbox-ext-pack
+apt install virtualbox virtualbox-ext-pack virt-viewer
 curl -fsSL https://get.docker.com -o - | sh
-
-# gnome extensions and tweaks
-apt install gnome-tweak-tool gnome-shell-extensions
-# Get EasyScreenCast from https://extensions.gnome.org/
-add-apt-repository ppa:gerardpuig/ppa && apt update
-apt install ubuntu-cleaner
 
 # journal cleaner
 echo "journalctl --vacuum-size=200M" > /etc/cron.monthly/journal-cleaner && chmod 755 /etc/cron.monthly/journal-cleaner
 # OR
 echo "journalctl --vacuum-time=2d" > /etc/cron.daily/journal-cleaner && chmod 755 /etc/cron.daily/journal-cleaner
+add-apt-repository ppa:gerardpuig/ppa && apt update
+apt install ubuntu-cleaner
 
 # Additional fonts
-apt install ubuntu-restricted-extras
+apt install ubuntu-restricted-extras fonts-linuxlibertine
+
+# Office
+apt install calibre # A must-have app for your books
+apt install libreoffice-help-en-us libreoffice-help-hu libreoffice-l10n-hu libreoffice-gnome libreoffice
+
+# Multimedia
+apt install v4l-utils qv4l2 winff handbrake vlc mencoder ffmpeg2theora ffmpeg qasmixer mediainfo
+add-apt-repository ppa:openshot.developers/ppa && apt update && apt install openshot-qt
+
 
 # Inkscape is a powerful drawing and editing tool
 # apt-add-repository ppa:inkscape.dev/stable && apt update
@@ -46,7 +55,7 @@ apt install inkscape
 apt install qpdfview
 
 # Zotero research tool
-add-apt-repository ppa:smathot/cogscinl && apt update
+TODO no longer maintains Zotero / add-apt-repository ppa:smathot/cogscinl && apt update
 apt install zotero-standalone
 
 # Networking (VPN, wifi hotspot, etc.)
@@ -55,9 +64,9 @@ apt install hostapd # if you want to create a wifi access point
 
 # Software development
 # apt-add-repository ppa:geany-dev/ppa && apt-get update
-apt-get install geany geany-plugin-\*
+apt install geany geany-plugin-\*
 # Version management
-apt-get install rapidsvn bzr git mercurial
+apt-get install git
 apt-get install diodon-plugins  # A lightweight clipboard manager
 # Java stuff
 apt-get install default-jre default-jdk
@@ -73,6 +82,15 @@ apt-add-repository ppa:marutter/c2d4u && apt-get update
 curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
 apt update && apt install teams
+
+# Clean up the mess
+apt -f install
+apt -y autoclean
+apt autoremove
+apt -y clean
+
+
+
 
 
 # Below: not tested / not needed on Ubuntu 20.04
@@ -92,22 +110,6 @@ apt-add-repository ppa:gencfsm/ppa && apt update
 apt install gnome-encfs-manager
 # Use cryptonite on Android to decrypt encrypted files
 
-# Gnome shell extensions and appindicators
-apt install gnome-shell-pomodoro gnome-shell-extension-suspend-button
-# previous pomodoro app:
-# apt-add-repository ppa:atareao/atareao && apt update
-# apt install pomodoro-indicator youtube-indicator cryptfolder-indicator # and so on
-
-# TODO: these are not supported on 16.04 / need to download the fonts manually
-# apt-add-repository ppa:pmjdebruijn/font-release && apt-get update
-# apt-get install fonts-linuxlibertine-graphite
-
-# Libreoffice upgrade if you need it
-apt-add-repository ppa:libreoffice/ppa && apt update && apt upgrade
-
-
-add-apt-repository ppa:openshot.developers/ppa && apt update && apt install openshot-qt
-
 #
 # Sysadmin
 #
@@ -115,17 +117,15 @@ apt install xca nagstamon
 
 #
 # Multimedia
-#
+apt install v4l-utils
 add-apt-repository ppa:me-davidsansome/clementine && apt-get update 
 apt-get install clementine ripperx radiotray easytag flac faac faad sox vorbis-tools id3v2 lame libflac++6
 apt-get install mpeg3-utils mpegdemux mpeg2dec mpg321 mpg123 libmpeg2-4 libmpeg3-1
 add-apt-repository ppa:stebbins/handbrake-snapshots && apt-get update   # or -releases
-apt-get install winff handbrake vlc mencoder ffmpeg2theora ffmpeg 
 apt-get install ubuntu-restricted-extras libavcodec-extra libavformat-extra-54 libavcodec-extra-54 liba52-dev
 apt-get install libmad0 libjpeg-progs libavutil-extra-52 libswscale-extra-2
 apt-get install libdvdnav4 libdvdread4  && /usr/share/doc/libdvdread4/install-css.sh
 apt-get install rygel rygel-preferences # very simple UPnP mediaserver
-apt-get install calibre # A must-have app for your books
 add-apt-repository ppa:yorba/ppa && apt-get update # Shotwell updates
 apt-get install gimp gimp-plugin-registry gimp-data-extras
 apt-get install phatch nautilus-image-converter
@@ -150,7 +150,7 @@ add-apt-repository ppa:gnome3-team/gnome3 && apt-get update
 apt-get upgrade
 
 # Other stuff
-apt-get install chromium-browser filezilla gnome-clocks
+apt-get install filezilla gnome-clocks
 apt-get install gkrellm* unetbootin qbittorrent
 
 #
@@ -166,10 +166,3 @@ add-apt-repository ppa:mc3man/trusty-media && apt-get update
 apt-get install gstreamer0.10-ffmpeg
 
 
-Get rid of some unwanted apps and clean up the mess
-
-apt-get purge evolution rhythmbox totem myspell-en-au myspell-en-za
-apt-get -f install
-apt-get -y autoclean
-apt-get autoremove
-apt-get -y clean
